@@ -1,7 +1,13 @@
 /**
  * @file    main.cpp
- * @brief   Demonstrates passing static arrays to functions in C++.
+ * @brief   Demonstrates dynamic 2D array allocation and cleanup.
  *
+ * @details
+ * Builds a 2x3 matrix using `new` for rows and row pointers, modifies
+ * its contents, prints the matrix, and then properly deallocates the
+ * dynamic memory to avoid leaks.
+ *
+ * @author  Mohamed Atef
  * @date    2026-06-16
  */
 

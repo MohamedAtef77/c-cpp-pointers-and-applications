@@ -1,7 +1,13 @@
 /**
  * @file    main.cpp
- * @brief   Demonstrates passing static arrays to functions in C++.
+ * @brief   Demonstrates dynamic memory allocation in C++ using new[].
  *
+ * @details
+ * Allocates integer arrays on the heap with `new[]`, copies array data,
+ * prints heap-stored values, and correctly frees allocated memory with
+ * `delete[]`.
+ *
+ * @author  Mohamed Atef
  * @date    2026-06-16
  */
 

@@ -1,7 +1,13 @@
 /**
  * @file    main.cpp
- * @brief   Demonstrates passing static arrays to functions in C++.
+ * @brief   Demonstrates a simple array ADT example using std::array.
  *
+ * @details
+ * Shows how to use `std::array<int, 5>` as a fixed-size array wrapper,
+ * how to access elements with `at()` safely, and how to sort the array
+ * contents before printing them.
+ *
+ * @author  Mohamed Atef
  * @date    2026-06-16
  */
 
