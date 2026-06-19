@@ -5,5 +5,11 @@
         "random": "cpp",
         "limits": "cpp",
         "istream": "cpp"
+    },
+    "chat.tools.terminal.autoApprove": {
+        "/^cd /d \"e:\\\\Courses\\\\c-cpp-pointers-and-applications\\\\Section02_Static_Arrays\\\\Labs\\\\06_multi_dim_arr_dma\"; python -c \"from pathlib import Path; t=Path\\('main\\.cpp'\\)\\.read_text\\(\\); print\\(repr\\(t\\)\\)\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
     }
 }
