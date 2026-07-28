@@ -1,16 +1,13 @@
 /**
  * @file    main.cpp
- * @brief   L-value and R-value binding demonstration in C++.
+ * @brief   Copy and move semantics for `Integer` and `GArray`.
  *
  * @details
- * Demonstrates:
- *  - passing lvalues and rvalues to functions
- *  - overload resolution between `int &` and `const int &`
- *  - returning references from functions safely
- *  - value semantics for copy-by-value parameters
- *
- * The program prints which overload is selected and exercises both
- * lvalue and rvalue argument binding.
+ * Revisits the `Integer` copy/move demonstration and extends it to
+ * `Basic::GArray`, exercising its copy constructor, move constructor,
+ * copy-assignment, and move-assignment to show that a dynamically-allocated
+ * array container can be copied and moved just as safely as a single
+ * pointer-owning object.
  *
  * @author  Mohamed Atef
  * @date    2026-06-16

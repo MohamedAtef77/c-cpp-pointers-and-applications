@@ -1,10 +1,11 @@
 /**
  * @file    main.cpp
- * @brief   Add elements to the front and back of a singly linked list
+ * @brief   Add elements to the front and back of a doubly linked list
  *
  * @details
- * Demonstrates basic insertion into a singly linked list by adding values to
- * the front of the list and printing the resulting traversal order.
+ * Demonstrates basic insertion into a doubly linked list by adding values to
+ * both the front and back of the list, then traversing it forward from the
+ * head and backward from the tail.
  *
  * @author  Mohamed Atef
  * @date    2026-06-16
@@ -28,13 +29,13 @@ using namespace std;
  */
 int main()
 {
-    SingleList<int> list;
+    DoubleList<int> list;
 
-    list.Add(10);
-    list.Add(20);
-    list.Add(30);
+    list.push_back(20);
+    list.push_back(30);
+    list.push_front(10);
 
-    cout << "List contents: ";
+    cout << "List contents (forward): ";
     for (Node<int>* node = list.get_head(); node != nullptr; node = node->m_pNext) {
         cout << node->m_data;
         if (node->m_pNext) {
@@ -43,8 +44,18 @@ int main()
     }
     cout << '\n';
 
+    cout << "List contents (backward): ";
+    for (Node<int>* node = list.get_tail(); node != nullptr; node = node->m_pPrev) {
+        cout << node->m_data;
+        if (node->m_pPrev) {
+            cout << " <- ";
+        }
+    }
+    cout << '\n';
+
     if (list.get_head()) {
         cout << "Head value: " << list.get_head()->m_data << '\n';
+        cout << "Tail value: " << list.get_tail()->m_data << '\n';
     } else {
         cout << "The list is empty." << '\n';
     }

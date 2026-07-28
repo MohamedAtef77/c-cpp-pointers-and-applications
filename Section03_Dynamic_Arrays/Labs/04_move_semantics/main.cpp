@@ -1,16 +1,13 @@
 /**
  * @file    main.cpp
- * @brief   L-value and R-value binding demonstration in C++.
+ * @brief   Move semantics for a class that owns a raw pointer.
  *
  * @details
- * Demonstrates:
- *  - passing lvalues and rvalues to functions
- *  - overload resolution between `int &` and `const int &`
- *  - returning references from functions safely
- *  - value semantics for copy-by-value parameters
- *
- * The program prints which overload is selected and exercises both
- * lvalue and rvalue argument binding.
+ * Demonstrates an `Integer` class with copy and move constructors/assignment
+ * operators, each printing which overload runs. Assigning and initializing
+ * from the temporaries returned by `Create()` shows the compiler preferring
+ * the move overloads over the copy overloads, and how a moved-from object is
+ * left in a safely destructible (null) state.
  *
  * @author  Mohamed Atef
  * @date    2026-06-16

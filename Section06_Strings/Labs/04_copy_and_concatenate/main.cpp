@@ -1,13 +1,13 @@
 /**
  * @file    main.cpp
- * @brief   Demonstration of a function to print C-style strings.
+ * @brief   Demonstration of C-style string copy and concatenation.
  *
  * @details
- * This file defines and demonstrates a `Print` function that takes a
- * C-style string (a null-terminated character array) and prints it to
- * the console character by character until it encounters the null terminator.
- * The `main` function initializes a C-style string and calls `Print` to
- * display it.
+ * This file defines `StringCopy` and `StringConcatenate` functions that
+ * operate on null-terminated character arrays, alongside the `Print` and
+ * `StringLength` helpers from earlier labs. The `main` function builds a
+ * full name by copying a first name into a buffer and concatenating a last
+ * name onto it.
  *
  * @author  Mohamed Atef
  * @date    2026-06-16
@@ -107,7 +107,7 @@ void StringConcatenate(char *destination, const char *source)
 }
 
 /**
- * @brief  Entry point for the C-style string printing lab.
+ * @brief  Entry point for the C-style string copy/concatenate lab.
  *
  * @return 0 on success.
  */

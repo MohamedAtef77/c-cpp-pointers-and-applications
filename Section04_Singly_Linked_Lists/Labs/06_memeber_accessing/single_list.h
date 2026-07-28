@@ -4,6 +4,10 @@
 #include <stdexcept>
 #include <utility>
 
+/*
+ * @brief Singly linked list container.
+ * @tparam T Element type.
+ */
 template<typename T>
 class SingleList {
 public:
@@ -15,9 +19,15 @@ public:
     using const_reference = const T&;
 
     /* --- Constructors, destructor, and special members --- */
-    
+
+    /*
+     * @brief Constructs an empty list.
+     */
     SingleList() : m_pHead(nullptr), m_Size(0) {}
 
+    /*
+     * @brief Constructs a list with `count` copies of `value`.
+     */
     SingleList(size_type count, const_reference value) : m_pHead(nullptr), m_Size(0) {
         if (count == 0) {
             return;
@@ -41,6 +51,9 @@ public:
         }
     }
 
+    /*
+     * @brief Constructs a list from an initializer list.
+     */
     SingleList(std::initializer_list<value_type> values) : m_pHead(nullptr), m_Size(0)
     {
         Node* tail = nullptr;
@@ -61,10 +74,16 @@ public:
         }
     }
 
+    /*
+     * @brief Destroys the list and releases its nodes.
+     */
     ~SingleList() {
         clear();
     }
 
+    /*
+     * @brief Copy constructor. Deep-copies every node from `other`.
+     */
     SingleList(const SingleList &other) : m_pHead(nullptr), m_Size(0) {
         Node* tail = nullptr;
         Node* current = other.m_pHead;
@@ -83,6 +102,9 @@ public:
         }
     }
 
+    /*
+     * @brief Copy assignment operator, implemented via copy-and-swap.
+     */
     SingleList &operator=(const SingleList &other) {
         if (this != &other) {
             SingleList temp(other);
@@ -91,11 +113,17 @@ public:
         return *this;
     }
 
+    /*
+     * @brief Move constructor. Steals `other`'s nodes and leaves it empty.
+     */
     SingleList(SingleList &&other) noexcept : m_pHead(other.m_pHead), m_Size(other.m_Size) {
         other.m_pHead = nullptr;
         other.m_Size = 0;
     }
 
+    /*
+     * @brief Move assignment operator. Releases owned nodes, then steals `other`'s.
+     */
     SingleList &operator=(SingleList &&other) noexcept {
         if (this != &other) {
             clear();
@@ -109,6 +137,10 @@ public:
 
     /* --- Public list operations --- */
 
+    /*
+     * @brief Returns the first element.
+     * @throws std::out_of_range if the list is empty.
+     */
     const_reference Front() const {
         if (Empty()) {
             throw std::out_of_range("SingleList is empty");
@@ -116,20 +148,33 @@ public:
         return m_pHead->m_data;
     }
 
+    /*
+     * @brief Returns true when the list is empty.
+     */
     bool Empty() const {
         return m_pHead == nullptr;
     }
 
+    /*
+     * @brief Clears the list, releasing all nodes.
+     */
     void Clear() {
         clear();
     }
 
+    /*
+     * @brief Adds an element to the front of the list.
+     */
     void Add(const_reference elem) {
         Node* newNode = new Node(elem, m_pHead);
         m_pHead = newNode;
         ++m_Size;
     }
 
+    /*
+     * @brief Inserts an element at the specified index.
+     * @throws std::out_of_range if index is invalid.
+     */
     void Insert(size_type index, const_reference elem) {
         if (index > m_Size) {
             throw std::out_of_range("Insert index out of range");
@@ -151,6 +196,10 @@ public:
         ++m_Size;
     }
 
+    /*
+     * @brief Removes the element at the specified index.
+     * @throws std::out_of_range if index is invalid.
+     */
     void Erase(size_type index) {
         if (Empty() || index >= m_Size) {
             throw std::out_of_range("Erase index out of range");
@@ -174,6 +223,10 @@ public:
         --m_Size;
     }
 
+    /*
+     * @brief Returns a mutable reference to the element at the specified index.
+     * @throws std::out_of_range if index is invalid.
+     */
     reference At(size_type index) {
         if (index >= m_Size) {
             throw std::out_of_range("Index out of range");
@@ -186,6 +239,10 @@ public:
         return current->m_data;
     }
 
+    /*
+     * @brief Returns a read-only reference to the element at the specified index.
+     * @throws std::out_of_range if index is invalid.
+     */
     const_reference At(size_type index) const {
         if (index >= m_Size) {
             throw std::out_of_range("Index out of range");
@@ -198,6 +255,9 @@ public:
         return current->m_data;
     }
 
+    /*
+     * @brief Prints the list contents to a stream as "a -> b -> c".
+     */
     void Print(std::ostream& os) const {
         Node* current = m_pHead;
         while (current != nullptr) {
@@ -209,6 +269,9 @@ public:
         }
     }
 
+    /*
+     * @brief Returns the number of elements stored.
+     */
     size_type GetSize() const {
         return m_Size;
     }
@@ -225,6 +288,10 @@ private:
     size_type m_Size{0};
 
     /* --- Private helper functions --- */
+
+    /*
+     * @brief Releases all owned nodes.
+     */
     void clear() noexcept {
         Node* current = m_pHead;
         while (current) {
@@ -235,6 +302,10 @@ private:
         m_pHead = nullptr;
         m_Size = 0;
     }
+
+    /*
+     * @brief Swaps contents with another list.
+     */
     void swap(SingleList &other) noexcept {
         using std::swap;
         swap(m_pHead, other.m_pHead);

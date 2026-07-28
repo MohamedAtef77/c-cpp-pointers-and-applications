@@ -1,13 +1,12 @@
 /**
  * @file    main.cpp
- * @brief   Demonstration of a function to print C-style strings.
+ * @brief   Demonstration of a function to compute C-style string length.
  *
  * @details
- * This file defines and demonstrates a `Print` function that takes a
- * C-style string (a null-terminated character array) and prints it to
- * the console character by character until it encounters the null terminator.
- * The `main` function initializes a C-style string and calls `Print` to
- * display it.
+ * This file defines a `Print` function that prints a C-style string to the
+ * console, and a `StringLength` function that walks a null-terminated
+ * character array to count its characters. The `main` function initializes
+ * a C-style string and reports its length.
  *
  * @author  Mohamed Atef
  * @date    2026-06-16
@@ -62,7 +61,7 @@ int StringLength(const char *str)
 }
 
 /**
- * @brief  Entry point for the C-style string printing lab.
+ * @brief  Entry point for the C-style string length lab.
  *
  * @return 0 on success.
  */

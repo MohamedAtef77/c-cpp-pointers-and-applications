@@ -1,10 +1,11 @@
 /**
  * @file    main.cpp
- * @brief   Copy and move semantics for a singly linked list
+ * @brief   Insert, erase, front, and back operations on a doubly linked list
  *
  * @details
- * Demonstrates how a `SingleList` behaves when it is copied or moved, and
- * how each instance manages its own nodes.
+ * Demonstrates the remaining `DoubleList` operations: inserting and erasing
+ * elements by index, reading the front and back elements, checking size and
+ * emptiness, and clearing the list.
  *
  * @author  Mohamed Atef
  * @date    2026-06-16
@@ -22,16 +23,16 @@ using namespace std;
  *===========================================================================*/
 
 /**
- * @brief  Entry point for the copy semantics linked list lab.
+ * @brief  Entry point for the "rest of the functions" linked list lab.
  *
  * @return 0 on success.
  */
 int main()
 {
-    SingleList<int> list;
-    list.Add(10);
-    list.Add(20);
-    list.Add(30);
+    DoubleList<int> list;
+    list.push_back(10);
+    list.push_back(20);
+    list.push_back(30);
 
     cout << "Initial list: ";
     for (Node<int>* node = list.get_head(); node != nullptr; node = node->m_pNext) {
@@ -42,8 +43,8 @@ int main()
     }
     cout << "\n";
 
-    list.Insert(1, 25);
-    list.Erase(2);
+    list.insert(1, 25);
+    list.erase(2);
 
     cout << "After insert/erase: ";
     for (Node<int>* node = list.get_head(); node != nullptr; node = node->m_pNext) {
@@ -54,12 +55,13 @@ int main()
     }
     cout << "\n";
 
-    cout << "Front: " << list.Front() << "\n";
-    cout << "Size: " << list.GetSize() << "\n";
-    cout << "Empty: " << (list.Empty() ? "true" : "false") << "\n";
+    cout << "Front: " << list.front() << "\n";
+    cout << "Back: " << list.back() << "\n";
+    cout << "Size: " << list.get_size() << "\n";
+    cout << "Empty: " << (list.empty() ? "true" : "false") << "\n";
 
-    list.Clear();
-    cout << "After clear, empty: " << (list.Empty() ? "true" : "false") << "\n";
+    list.clear();
+    cout << "After clear, empty: " << (list.empty() ? "true" : "false") << "\n";
 
     return 0;
 }

@@ -1,16 +1,12 @@
 /**
  * @file    main.cpp
- * @brief   L-value and R-value binding demonstration in C++.
+ * @brief   Copy semantics for a class that owns a raw pointer.
  *
  * @details
- * Demonstrates:
- *  - passing lvalues and rvalues to functions
- *  - overload resolution between `int &` and `const int &`
- *  - returning references from functions safely
- *  - value semantics for copy-by-value parameters
- *
- * The program prints which overload is selected and exercises both
- * lvalue and rvalue argument binding.
+ * Demonstrates an `Integer` class that owns a raw `int*` and defines its own
+ * copy constructor and copy-assignment operator to perform a deep copy.
+ * Each copy allocates its own storage, so `a` and `b` remain independent and
+ * each destructor safely deletes only the memory it owns.
  *
  * @author  Mohamed Atef
  * @date    2026-06-16
@@ -86,19 +82,18 @@ int main()
     // Create an Integer object
     Integer a(42);
     
-    // Shallow copy: both 'a' and 'b' point to the same memory
-    // Default copy constructor is used (memberwise copy)
+    // Deep copy: the user-defined copy constructor allocates separate
+    // storage for 'b', so 'a' and 'b' own independent memory.
     Integer b = a;
-    
+
     cout << "a: ";
     a.Print();
-    
+
     cout << "b: ";
     b.Print();
-    
-    // When 'a' goes out of scope, its destructor deletes the memory
-    // When 'b' goes out of scope, its destructor tries to delete the same memory again
-    // This causes a double-deletion error (crash or undefined behavior)
-    
+
+    // When 'a' and 'b' go out of scope, each destructor deletes only the
+    // memory it owns; no double-deletion occurs.
+
     return 0;
 }

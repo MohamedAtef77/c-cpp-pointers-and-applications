@@ -1,12 +1,8 @@
 /**
  * @file    main.cpp
- * @brief   Singly linked list class implementation lab
  * @brief   Demonstration of C-style string initialization.
  *
  * @details
- * Demonstrates a minimal node-based singly linked list using a `SingleList`
- * wrapper class. The example shows how the list is created, populated, and
- * traversed from the head node.
  * This file shows various ways to declare and initialize C-style strings
  * (null-terminated character arrays) in C++.
  *
@@ -25,7 +21,6 @@ using namespace std;
  *===========================================================================*/
 
 /**
- * @brief  Entry point for the singly linked list class implementation lab.
  * @brief  Entry point for the C-style string initialization lab.
  *
  * @return 0 on success.
